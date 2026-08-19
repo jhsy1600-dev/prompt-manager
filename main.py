@@ -6,6 +6,7 @@ while True:
 	print("\n===== 프롬프트 관리 메뉴 =====")
 	print("1. 프롬프트 추가")
 	print("2. 프롬프트 목록 보기")
+	print("3. 프롬프트 검색")
 	print("0. 종료")
 
 	choice = input("메뉴를 선택하세요: ")
@@ -28,6 +29,18 @@ while True:
 		else:
 			for index, prompt in enumerate(prompts, start=1):
 				print(f"{index}. {prompt['title']} - {prompt['content']}")
+
+	elif choice == "3":
+		keyword = input("검색할 키워드를 입력하세요: ")
+		found = False
+
+		for index, prompt in enumerate(prompts, start=1):
+			if keyword in prompt["title"] or keyword in prompt["content"]:
+				print(f"{index}. {prompt['title']} - {prompt['content']}")
+				found = True
+
+		if found == False:
+			print("검색 결과가 없습니다.")
 
 	elif choice == "0":
 		print("프로그램을 종료합니다.")
