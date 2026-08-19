@@ -7,6 +7,7 @@ while True:
 	print("1. 프롬프트 추가")
 	print("2. 프롬프트 목록 보기")
 	print("3. 프롬프트 검색")
+	print("4. 프롬프트 삭제")
 	print("0. 종료")
 
 	choice = input("메뉴를 선택하세요: ")
@@ -41,6 +42,27 @@ while True:
 
 		if found == False:
 			print("검색 결과가 없습니다.")
+
+	elif choice == "4":
+		if len(prompts) == 0:
+			print("삭제할 프롬프트가 없습니다.")
+		else:
+			print("\n삭제할 프롬프트를 선택하세요.")
+			for index, prompt in enumerate(prompts, start=1):
+				print(f"{index}. {prompt['title']} - {prompt['content']}")
+
+			delete_number = input("삭제할 번호를 입력하세요: ")
+
+			if delete_number.isdigit():
+				delete_index = int(delete_number) - 1
+
+				if 0 <= delete_index < len(prompts):
+					deleted_prompt = prompts.pop(delete_index)
+					print(f"'{deleted_prompt['title']}' 프롬프트가 삭제되었습니다.")
+				else:
+					print("존재하지 않는 번호입니다.")
+			else:
+				print("숫자를 입력해야 합니다.")
 
 	elif choice == "0":
 		print("프로그램을 종료합니다.")
