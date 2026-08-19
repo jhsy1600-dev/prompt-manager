@@ -1,72 +1,96 @@
+import json
+import os
+
+FILE_NAME = "prompts.json"
+
+
+def load_prompts():
+    """prompts.json 파일에서 프롬프트 목록을 불러오는 함수"""
+    if os.path.exists(FILE_NAME):
+        with open(FILE_NAME, "r", encoding="utf-8") as file:
+            return json.load(file)
+    return []
+
+
+def save_prompts(prompts):
+    """프롬프트 목록을 prompts.json 파일에 저장하는 함수"""
+    with open(FILE_NAME, "w", encoding="utf-8") as file:
+        json.dump(prompts, file, ensure_ascii=False, indent=4)
+
+
 print("프롬프트 관리 프로그램 시작!")
 
-prompts = []
+prompts = load_prompts()
 
 while True:
-	print("\n===== 프롬프트 관리 메뉴 =====")
-	print("1. 프롬프트 추가")
-	print("2. 프롬프트 목록 보기")
-	print("3. 프롬프트 검색")
-	print("4. 프롬프트 삭제")
-	print("0. 종료")
+    print("\n===== 프롬프트 관리 메뉴 =====")
+    print("1. 프롬프트 추가")
+    print("2. 프롬프트 목록 보기")
+    print("3. 프롬프트 검색")
+    print("4. 프롬프트 삭제")
+    print("0. 종료")
 
-	choice = input("메뉴를 선택하세요: ")
+    choice = input("메뉴를 선택하세요: ")
 
-	if choice == "1":
-		title = input("프롬프트 제목: ")
-		content = input("프롬프트 내용: ")
+    if choice == "1":
+        title = input("프롬프트 제목: ")
+        content = input("프롬프트 내용: ")
 
-		prompt = {
-			"title": title,
-			"content": content
-		}
+        prompt = {
+            "title": title,
+            "content": content
+        }
 
-		prompts.append(prompt)
-		print("프롬프트가 추가되었습니다.")
+        prompts.append(prompt)
+        save_prompts(prompts)
 
-	elif choice == "2":
-		if len(prompts) == 0:
-			print("저장된 프롬프트가 없습니다.")
-		else:
-			for index, prompt in enumerate(prompts, start=1):
-				print(f"{index}. {prompt['title']} - {prompt['content']}")
+        print("프롬프트가 추가되었습니다.")
 
-	elif choice == "3":
-		keyword = input("검색할 키워드를 입력하세요: ")
-		found = False
+    elif choice == "2":
+        if len(prompts) == 0:
+            print("저장된 프롬프트가 없습니다.")
+        else:
+            for index, prompt in enumerate(prompts, start=1):
+                print(f"{index}. {prompt['title']} - {prompt['content']}")
 
-		for index, prompt in enumerate(prompts, start=1):
-			if keyword in prompt["title"] or keyword in prompt["content"]:
-				print(f"{index}. {prompt['title']} - {prompt['content']}")
-				found = True
+    elif choice == "3":
+        keyword = input("검색할 키워드를 입력하세요: ")
+        found = False
 
-		if found == False:
-			print("검색 결과가 없습니다.")
+        for index, prompt in enumerate(prompts, start=1):
+            if keyword in prompt["title"] or keyword in prompt["content"]:
+                print(f"{index}. {prompt['title']} - {prompt['content']}")
+                found = True
 
-	elif choice == "4":
-		if len(prompts) == 0:
-			print("삭제할 프롬프트가 없습니다.")
-		else:
-			print("\n삭제할 프롬프트를 선택하세요.")
-			for index, prompt in enumerate(prompts, start=1):
-				print(f"{index}. {prompt['title']} - {prompt['content']}")
+        if found == False:
+            print("검색 결과가 없습니다.")
 
-			delete_number = input("삭제할 번호를 입력하세요: ")
+    elif choice == "4":
+        if len(prompts) == 0:
+            print("삭제할 프롬프트가 없습니다.")
+        else:
+            print("\n삭제할 프롬프트를 선택하세요.")
+            for index, prompt in enumerate(prompts, start=1):
+                print(f"{index}. {prompt['title']} - {prompt['content']}")
 
-			if delete_number.isdigit():
-				delete_index = int(delete_number) - 1
+            delete_number = input("삭제할 번호를 입력하세요: ")
 
-				if 0 <= delete_index < len(prompts):
-					deleted_prompt = prompts.pop(delete_index)
-					print(f"'{deleted_prompt['title']}' 프롬프트가 삭제되었습니다.")
-				else:
-					print("존재하지 않는 번호입니다.")
-			else:
-				print("숫자를 입력해야 합니다.")
+            if delete_number.isdigit():
+                delete_index = int(delete_number) - 1
 
-	elif choice == "0":
-		print("프로그램을 종료합니다.")
-		break
+                if 0 <= delete_index < len(prompts):
+                    deleted_prompt = prompts.pop(delete_index)
+                    save_prompts(prompts)
 
-	else:
-		print("잘못된 메뉴입니다. 다시 선택하세요.")
+                    print(f"'{deleted_prompt['title']}' 프롬프트가 삭제되었습니다.")
+                else:
+                    print("존재하지 않는 번호입니다.")
+            else:
+                print("숫자를 입력해야 합니다.")
+
+    elif choice == "0":
+        print("프로그램을 종료합니다.")
+        break
+
+    else:
+        print("잘못된 메뉴입니다. 다시 선택하세요.")
