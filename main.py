@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import json
 import os
 
@@ -149,3 +150,21 @@ while True:
 
     else:
         print("잘못된 메뉴입니다. 다시 선택하세요.")
+=======
+# 프롬프트 데이터
+prompts = [
+    {"title": "번역 요청", "content": "다음 문장을 영어로 번역해줘: "},
+    {"title": "코드 리뷰", "content": "다음 코드의 문제점을 찾아줘: "},
+    {"title": "요약 정리", "content": "다음 글을 3줄로 요약해줘: "},
+]
+
+# 프롬프트 목록을 보기 좋게 출력하는 함수
+def show_prompts():
+    print("\n===== 프롬프트 목록 =====")
+    for i, prompt in enumerate(prompts, start=1):
+        print(f"{i}. [{prompt['title']}] {prompt['content']}")
+    print("=======================\n")
+
+# 함수 호출 (실행)
+show_prompts()
+>>>>>>> bd5e4bd (3-2 완료)
