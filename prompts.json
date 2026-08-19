@@ -2,5 +2,31 @@
     {
         "title": "공부",
         "content": "오늘 메모한것을 정리해줘"
+    },
+    {
+        "title": "글쓰기 도우미",
+        "content": "글을 자연스럽게 다듬어줘"
+    },
+    {
+        "title": "글쓰기 도우미",
+        "content": "글을 자연스럽게 다듬어줘"
+    },
+    {
+        "title": "글쓰기 도우미",
+        "content": "글을 자연스럽게 고쳐줘"
+    },
+    {
+        "title": "글쓰기 도우미",
+        "content": "글을 자연스럽게 고쳐줘",
+        "categories": [
+            "writing"
+        ]
+    },
+    {
+        "title": "글쓰기",
+        "content": "맞춤법을 알려줘",
+        "categories": [
+            "글"
+        ]
     }
 ]

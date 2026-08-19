@@ -28,6 +28,8 @@ while True:
     print("2. 프롬프트 목록 보기")
     print("3. 프롬프트 검색")
     print("4. 프롬프트 삭제")
+    print("5. 저장")
+    print("6. 카테고리별 조회")
     print("0. 종료")
 
     choice = input("메뉴를 선택하세요: ")
@@ -35,15 +37,15 @@ while True:
     if choice == "1":
         title = input("프롬프트 제목: ")
         content = input("프롬프트 내용: ")
+        category = input("카테고리: ")
 
         prompt = {
             "title": title,
-            "content": content
+            "content": content,
+            "categories": [category]
         }
 
         prompts.append(prompt)
-        save_prompts(prompts)
-
         print("프롬프트가 추가되었습니다.")
 
     elif choice == "2":
@@ -87,6 +89,21 @@ while True:
                     print("존재하지 않는 번호입니다.")
             else:
                 print("숫자를 입력해야 합니다.")
+    elif choice == "5":
+        save_prompts(prompts)
+        print("저장되었습니다.")
+
+    elif choice == "6":
+        category = input("카테고리를 입력하세요: ")
+        found = False
+
+        for index, prompt in enumerate(prompts, start=1):
+            if category in prompt.get("categories", []):
+                print(f"{index}. {prompt['title']} - {prompt['content']}")
+                found = True
+
+        if not found:
+            print("해당 카테고리에 속하는 프롬프트가 없습니다.")
 
     elif choice == "0":
         print("프로그램을 종료합니다.")
