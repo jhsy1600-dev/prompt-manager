@@ -1,32 +1,20 @@
 [
     {
-        "title": "공부",
-        "content": "오늘 메모한것을 정리해줘"
+        "title": "블로그 글 작성 도우미",
+        "content": "당신은 10년 경력의 전문 블로거입니다. 주어진 주제에 대해 SEO에 최적화된 블로그 글을 작성해주세요.",
+        "category": "텍스트 생성",
+        "favorite": true
     },
     {
-        "title": "글쓰기 도우미",
-        "content": "글을 자연스럽게 다듬어줘"
+        "title": "제품 썸네일 생성",
+        "content": "제품의 특징을 살린 매력적인 썸네일 이미지를 생성해주세요.",
+        "category": "이미지 생성",
+        "favorite": false
     },
     {
-        "title": "글쓰기 도우미",
-        "content": "글을 자연스럽게 다듬어줘"
-    },
-    {
-        "title": "글쓰기 도우미",
-        "content": "글을 자연스럽게 고쳐줘"
-    },
-    {
-        "title": "글쓰기 도우미",
-        "content": "글을 자연스럽게 고쳐줘",
-        "categories": [
-            "writing"
-        ]
-    },
-    {
-        "title": "글쓰기",
-        "content": "맞춤법을 알려줘",
-        "categories": [
-            "글"
-        ]
+        "title": "IT 컨설턴트 페르소나",
+        "content": "당신은 10년 경력의 IT 컨설턴트입니다. 사용자의 문제를 분석하고 해결 방법을 제안해주세요.",
+        "category": "페르소나",
+        "favorite": false
     }
 ]
