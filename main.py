@@ -106,6 +106,7 @@ while True:
     print("6. 카테고리별 조회")
     print("7. 프롬프트 상세보기")
     print("8. 즐겨찾기 변경")
+    print("9. 즐겨찾기 목록 보기")
     print("0. 종료")
 
     choice = input("메뉴를 선택하세요: ")
@@ -216,6 +217,21 @@ while True:
             else:
                 print("숫자를 입력해야 합니다.")
 
+    elif choice == "9":
+        favorite_prompts = []
+
+        for prompt in prompts:
+            if prompt.get("favorite", False):
+                favorite_prompts.append(prompt)
+
+        if len(favorite_prompts) == 0:
+            print("즐겨찾기한 프롬프트가 없습니다.")
+        else:
+            print("\n===== 즐겨찾기 목록 =====")
+
+            for index, prompt in enumerate(favorite_prompts, start=1):
+                print(f"{index}. ★ [{prompt['title']}] - {prompt['content']}")
+                
     elif choice == "0":
         print("프로그램을 종료합니다.")
         break
